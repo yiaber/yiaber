@@ -79,6 +79,75 @@
           </div>
         </div>
       </div>
+      <!-- Smartisan TNT -->
+      <div class="remen">
+        <div class="text11">
+          <h5>坚果R2及配件</h5>
+        </div>
+        <div class="card">
+          <div class="card1">
+            <router-link to="">
+              <img :src="'http://localhost:3000/'+remen[1].img" >
+            </router-link>
+          </div>
+          <div class="card1" v-for="(item, i) in TNT" :key="i">
+            <router-link to="">
+              <img :src="'http://localhost:3000/' + item.imgage" alt="" />
+              <h3>{{ item.fname }}</h3>
+              <h4>{{ item.subtitle }}</h4>
+              <div class="money">
+                <span>￥{{ item.price.toFixed(2) }}</span>
+              </div>
+            </router-link>
+          </div>
+        </div>
+      </div>
+      <!-- 官方精选配件 -->
+      <div class="remen">
+        <div class="text11">
+          <h5>官方精选配件</h5>
+        </div>
+        <div class="card">
+          <div class="card1">
+            <router-link to="">
+              <img :src="'http://localhost:3000/'+remen[2].img" >
+            </router-link>
+          </div>
+          <div class="card1" v-for="(item, i) in peijian" :key="i">
+            <router-link to="">
+              <img :src="'http://localhost:3000/' + item.imgage" alt="" />
+              <h3>{{ item.fname }}</h3>
+              <h4>{{ item.subtitle }}</h4>
+              <div class="money">
+                <span>￥{{ item.price.toFixed(2) }}</span>
+              </div>
+            </router-link>
+          </div>
+        </div>
+      </div>
+      <!-- 足迹系列保护壳 -->
+      <div class="remen">
+        <div class="text11">
+          <h5>官方精选配件</h5>
+        </div>
+        <div class="card">
+          <div class="card1">
+            <router-link to="">
+              <img :src="'http://localhost:3000/'+remen[3].img" >
+            </router-link>
+          </div>
+          <div class="card1" v-for="(item, i) in baohuke" :key="i">
+            <router-link to="">
+              <img :src="'http://localhost:3000/' + item.imgage" alt="" />
+              <h3>{{ item.fname }}</h3>
+              <h4>{{ item.subtitle }}</h4>
+              <div class="money">
+                <span>￥{{ item.price.toFixed(2) }}</span>
+              </div>
+            </router-link>
+          </div>
+        </div>
+      </div>
       
     </div>
 
@@ -184,6 +253,9 @@ export default {
       rexiao: "",////热门商品
       remen:[{img:''}],// 商品详情列表第一张图
       jianguo:'',//坚果R2及配件
+      TNT:'',//Smartisan TNT
+      peijian:'',//官方精选配件
+      baohuke:'',//足迹系列保护壳
     };
   },
   mounted() {
@@ -208,6 +280,19 @@ export default {
     this.axios.get("/home/index/31").then((result)=>{
       this.jianguo=result.data.result;
     });
+    //Smartisan TNT
+    this.axios.get("/home/index/32").then((result)=>{
+      this.TNT=result.data.result;
+      // console.log(result.data)
+    });
+    // 官方精选配件
+    this.axios.get('/home/index/33').then((result)=>{
+      this.peijian=result.data.result;
+    })
+    //足迹系列保护壳
+    this.axios.get('/home/index/34').then((result)=>{
+      this.baohuke=result.data.result;
+    })
 
   },
 };

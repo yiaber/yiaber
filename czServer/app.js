@@ -99,6 +99,30 @@ app.get('/home/index/31',(req,res)=>{
     res.send({msg:'ok',result:result})
   })
 })
+//Smartisan TNT
+app.get('/home/index/32',(req,res)=>{
+  let sql='select*from cz_article where fid=14 or fid=23 or fid=13 or fid=22 or fid=16 or fid=12';
+  pool.query(sql,(errer,result)=>{
+    if (errer) throw errer;
+    res.send({msg:'ok',result:result})
+  })
+})
+//官方精选配件
+app.get('/home/index/33',(req,res)=>{
+  let sql='select*from cz_article where fid=8 or fid=15 or fid=24 or fid=10 or fid=25 or fid=7';
+  pool.query(sql,(errer,result)=>{
+    if (errer) throw errer;
+    res.send({msg:'ok',result:result})
+  })
+})
+//足迹系列保护壳
+app.get('/home/index/34',(req,res)=>{
+  let sql='select*from cz_article where fid=17 or fid=26 or fid=27 or fid=28 or fid=29 or fid=30';
+  pool.query(sql,(errer,result)=>{
+    if (errer) throw errer;
+    res.send({msg:'ok',result:result})
+  })
+})
 
 
 
