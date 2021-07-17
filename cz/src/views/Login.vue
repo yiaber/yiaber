@@ -16,8 +16,10 @@
       </ul>
       <div class="title-di">
         <div class="text">
-          <input type="checkbox" class="input11" />
+          <label>
+            <input type="checkbox" class="input11" />
           <span>自动登录</span>
+          </label>
         </div>
         <div class="aa">
           <div><a href="">短信验证码登录</a></div>
@@ -26,6 +28,11 @@
       </div>
       <div class="btns">
         <button>登录</button>
+      </div>
+      <div class="register">
+        <span>
+          还没有账号？快来 <router-link to="/register">注册</router-link>一个吧
+        </span>
       </div>
     </div>
   </div>
@@ -49,6 +56,19 @@
   border-radius: 12px;
   box-shadow: 0 20px 50px rgb(0 0 0 / 15%);
   background: #fff;
+  .register{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    color:  rgb(153, 153, 153);;
+    span{
+      margin-right: 20px;
+      a{
+        color: rgba(29,161,243);
+      }
+    }
+  }
  .btns{
     button{
     width: 444px;
@@ -174,5 +194,6 @@
       width: 100%;
     }
   }
+  
 }
 </style>

@@ -8,16 +8,22 @@
       </div>
       <ul class="common-from">
         <li>
-          <input type="text" placeholder="用户名" />
+          <input type="text" placeholder="用户名" v-model="uname" @blur="checkUname"/>
+          <span :style="{display:unname}">用户名格式不对！</span>
+          <span :style="{display:enname}" style="color:green">用户名格式正确</span>
         </li>
         <li>
-          <input type="text" placeholder="手机号/邮箱" />
+          <input type="text" placeholder="手机号" v-model="phone" @blur="checkPhone"/>
+          <span :style="{display:unphone}">手机号码格式不对！</span>
+          <span :style="{display:enphone}" style="color:green">手机号码格式正确</span>
         </li>
         <li>
           <input type="password" placeholder="密码" />
+          <span style="display:none">密码格式不正确！</span>
         </li>
         <li>
           <input type="password" placeholder="确认密码" />
+          <span style="display:none">两次密码不一致！</span>
         </li>
       </ul>
       <div class="title-di">
@@ -26,16 +32,56 @@
           <span>我已阅读并同意相关服务条款和隐私政策</span>
         </div>
         <div class="aa">
-          <div><a href="">短信验证码登录</a></div>
-          <div><a href="">忘记密码？</a></div>
+          <div>
+            <router-link to="/login">返回登录页面</router-link>
+          </div>
         </div>
       </div>
       <div class="btns">
-        <button>注册</button>
+        <button @click="checkForm">注册</button>
       </div>
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      
+      uname:'' ,//uname将于用户名文本框实现双向绑定，实现用户名格式验证
+      unname:'none',
+      enname:'none',
+      phone:'',//phone 将手机号码实现双向绑定，实现手机号码格式验证
+      unphone:'none',
+      enphone:'none'
+    }
+  },
+  methods:{
+    //点击注册之后执行验证表单
+    checkUname(){
+      //验证用户名 要求单词字符6~15位
+      let reg=/^\w{6,15}$/;
+      if(reg.test(this.uname)){//验证成功
+        this.enname="inline-block";
+        this.unname="none"
+      }else{//验证失败
+        this.unname="inline-block"
+        this.enname="none"
+      }
+    },
+    checkPhone(){
+      let reg=/^\d{11}$/; 
+      if(reg.test(this.phone)){
+        this.enphone="inline-block",
+        this.unphone="none"
+      }else{
+        this.unphone="inline-block",
+        this.enphone="none"
+      }
+    }
+  }
+}
+</script>
 <style lang="scss"  scoped>
 .bj {
   overflow: auto;
@@ -111,7 +157,7 @@
       }
       div:last-child {
         float: right;
-        border-left: 1px solid rgb(153, 153, 153);
+        // border-left: 1px solid rgb(153, 153, 153);
         margin-right: -30px;
         padding-left: 5px;
       }
@@ -131,6 +177,7 @@
     position: relative;
   }
   .common-from {
+    position: relative;
     margin: 0;
     padding: 0;
     border: 0;
@@ -139,13 +186,15 @@
     vertical-align: baseline;
     margin-top: 70px;
     span {
+      position: absolute;
       line-height: 40px;
-      left: 13px;
+      right:20px;
       text-align: left;
       font-size: 12px;
+      color: red;
     }
     input {
-      width: 372px;
+      width: 300px;
       font-weight: 700;
       font-size: 15px;
       height: 20px;
