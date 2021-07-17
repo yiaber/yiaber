@@ -3,7 +3,7 @@
     <div class="login">
       <div class="title">
         <div>
-          <h4>使用 Smartisan ID 登录官网</h4>
+          <h4>注册 Smartisan ID 账号 </h4>
         </div>
       </div>
       <ul class="common-from">
@@ -11,13 +11,19 @@
           <input type="text" placeholder="用户名" />
         </li>
         <li>
+          <input type="text" placeholder="手机号/邮箱" />
+        </li>
+        <li>
           <input type="password" placeholder="密码" />
+        </li>
+        <li>
+          <input type="password" placeholder="确认密码" />
         </li>
       </ul>
       <div class="title-di">
         <div class="text">
           <input type="checkbox" class="input11" />
-          <span>自动登录</span>
+          <span>我已阅读并同意相关服务条款和隐私政策</span>
         </div>
         <div class="aa">
           <div><a href="">短信验证码登录</a></div>
@@ -25,7 +31,7 @@
         </div>
       </div>
       <div class="btns">
-        <button>登录</button>
+        <button>注册</button>
       </div>
     </div>
   </div>
@@ -80,10 +86,11 @@
       span {
         margin-left: 8px;
         color: rgb(153, 153, 153);
-        font-size: 15px;
+        font-size: 12px;
       }
       .input11 {
         border-radius: 30px;
+        
       }
     }
     .aa {
@@ -111,8 +118,8 @@
     }
   }
   li {
-    margin: 20px;
-    margin-top: 40px;
+    margin: 0 auto;
+    margin-bottom: 12px;
     width: 444px;
     height: 44px;
     background: rgba(0, 0, 0, 0.03);
@@ -135,6 +142,7 @@
       line-height: 40px;
       left: 13px;
       text-align: left;
+      font-size: 12px;
     }
     input {
       width: 372px;
@@ -147,6 +155,7 @@
       z-index: 10;
       box-sizing: border-box;
       background: rgba(255, 255, 255, 0);
+      left: -20px;
     }
   }
 }

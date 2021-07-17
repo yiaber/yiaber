@@ -106,6 +106,16 @@ INSERT INTO cz_article VALUES(NULL ,'坚果 R2 足迹系列保护套 3M 开始�
 INSERT INTO cz_article VALUES(NULL ,'坚果 R2 足迹系列保护套 3M 开始销售透明胶带','为了那些改变人类足迹的进程',NULL ,'3M 开始销售透明胶带',29.00,'满 88 元包邮','img/phone-shell/55.webp',4);
 INSERT INTO cz_article VALUES(NULL ,'坚果 R2 足迹系列保护套 圆珠笔的改进者出生','为了那些改变人类足迹的进程',NULL ,'圆珠笔的改进者出生',59.00,'满 88 元包邮','img/phone-shell/33.webp',4);
 insert into cz_article values(null,'Smartisan TNT go','欢迎使用下一代电脑',NULL,'无线版，含Smartisan 智能手写笔',1699.00,'满 88 元包邮','img/tnt-product/17.webp',3);
+INSERT INTO cz_article VALUES(NULL, 'Smartisan TNT 大满足套装', '下一代手机，下一代电脑', NULL, '坚果 R2（12+256） + TNT go（无线版套装，含笔、扩展坞）', '5199.00', '满 88 元包邮', 'img/tnt-product/18.webp', 3);
+INSERT INTO cz_article VALUES(NULL, '坚果彩虹数据线', '七彩配色随机发货，为生活增添一份小小惊喜', NULL, '1 条装', '9.90', '数据线颜色随机发货，不支持因颜色喜好问题的更换', 'img/phone-shell/66.webp', 4);
+INSERT INTO cz_article VALUES(NULL, 'Smartisan 多功能数据线（USB 3.2 Gen 2）', '高清投屏，高速传输', '', '灰色', '39.00', '满 88 元包邮', 'img/phone-shell/77.webp', 4);
+INSERT INTO cz_article VALUES(NULL, '坚果 R2 足迹系列保护套 正电子的发现者出生', '为了那些改变人类足迹的进程', NULL, '正电子的发现者出生', '59.00', '满 88 元包邮', 'img/phone-shell/88.webp', 4);
+INSERT INTO cz_article VALUES(NULL, '足迹保护套 克里斯蒂安·多普勒出生 for iPhone 11', '公益宝贝', NULL, '克里斯蒂安·多普勒出生 for iPhone 11', '29.00', '满 88 元包邮', 'img/phone-shell/99.webp', 4);
+INSERT INTO cz_article VALUES(NULL, '足迹保护套 莱卡成为第一只进入地球轨道的动物 for iPhone 11', '公益宝贝', NULL, '官方标配', '29.00', '满 88 元包邮', 'img/phone-shell/100.webp', 4);
+INSERT INTO cz_article VALUES(NULL, '坚果 R2 足迹系列保护套 联合国通过《儿童权利宣言》', '为了那些改变人类足迹的进程', NULL, '联合国通过《儿童权利宣言》', '29.00', '满 88 元包邮', 'img/phone-shell/101.webp', 4);
+INSERT INTO cz_article VALUES(NULL, '足迹保护套 人类首次公开使用乙醚 for iPhone 11', '公益宝贝', NULL, '人类首次公开使用乙醚 for iPhone 11', '29.00', '满 88 元包邮', 'img/phone-shell/102.webp', 4);
+INSERT INTO cz_article VALUES(NULL, '坚果 QuickCharge 4+ 快速充电器', '全面兼容的 18W 快速充电', NULL, NULL, '59.00', '此款充电器为 Type-C 接口', 'img/phone-shell/103.webp', 4);
+INSERT INTO cz_article VALUES(NULL, 'Smartisan 原装快充充电器 18W', '18W 安全快充', NULL, NULL, '49.00', '满 88 元包邮', 'img/phone-shell/104.webp', 4);
 
 
 

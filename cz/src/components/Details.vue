@@ -5,7 +5,7 @@
         <div></div>
     </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
     .head{
         width: 100%;
         height: 45px;

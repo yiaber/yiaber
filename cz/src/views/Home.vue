@@ -272,9 +272,9 @@ export default {
     });
     // 商品详情列表第一张图
     this.axios.get("/home/index/3").then((result)=>{
-      // console.log(result.data);
+      console.log(result.data);
       this.remen=result.data.result;
-      // console.log(this.remen[1].img)
+      console.log(this.remen[1].img)
     });
     //查询坚果R2及配件
     this.axios.get("/home/index/31").then((result)=>{
@@ -297,7 +297,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 //商品样式
 .shangping {
   width: 1218px;
@@ -404,7 +404,7 @@ export default {
         }
       }
       .card1:hover {
-        box-shadow: 0 0 2px 1px rgb(226, 224, 224) inset;
+        box-shadow: 0 0 13px 1px rgb(51,51,51,0.1) inset;
       }
     }
   }

@@ -3,10 +3,12 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home'
 import Det from '../views/Det'
 import Login  from '../views/Login'
+import Register from '../components/Register'
 
 
-import Details from '../views/Details'
+// import Details from '../views/Details'
 import Carousel from '../components/Carousel'
+import Carousel1 from '../components/Carousel1'
 // import Carousels from '../components/Carousels'
 
 
@@ -17,9 +19,19 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path:'/register',
+    name:'Register',
+    component:Register
+  },
+  {
     path:'/carousel',
     name:'Carousel',
     component:Carousel
+  },
+  {
+    path:'/carousel1',
+    name:'Carousel1',
+    component:Carousel1
   },
   {
     path:'/login',
@@ -36,11 +48,11 @@ const routes = [
   //   name:'Home',
   //   component:Home
   // },
-  {
-    path:'/details',
-    name:'Details',
-    component:Details
-  }
+  // {
+  //   path:'/details',
+  //   name:'Details',
+  //   component:Details
+  // }
   ,
   {
     path: '/',

@@ -43,9 +43,9 @@
         </ul>
       </div>
       <div class="touxiang">
-        <a href="">
-            <div></div>
-        </a>
+        <router-link to="/login">
+          <div></div>
+        </router-link>
       </div>
       <div class="gouwuche">
         <a href=""><div></div></a>
@@ -53,7 +53,7 @@
     </div>
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .head {
   position: relative;
   width: 100%;
