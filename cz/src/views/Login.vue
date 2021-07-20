@@ -8,10 +8,12 @@
       </div>
       <ul class="common-from">
         <li>
-          <input type="text" placeholder="用户名" />
+          <input type="text" placeholder="用户名" v-model="uname" @blur="checkUname"/>
+          <span :style="{display:enname}">用户名格式不正确</span>
         </li>
         <li>
-          <input type="password" placeholder="密码" />
+          <input type="password" placeholder="密码" v-model="upwd"/>
+          <span :style="{display:enupwd}" style="color:red;fontSize:13px">密码错误</span>
         </li>
       </ul>
       <div class="title-di">
@@ -27,7 +29,7 @@
         </div>
       </div>
       <div class="btns">
-        <button>登录</button>
+        <button @click="checkForm">登录</button>
       </div>
       <div class="register">
         <span>
@@ -37,6 +39,42 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      upwd:'',//密码
+      uname:'',//用户名
+      enname:'none',
+      enupwd:'none'
+    }
+  },
+  methods:{
+    checkUname(){
+      let reg=/^\w{6,15}$/;
+      if(reg.test(this.uname)){
+        this.enname='none'
+         return true;
+      }else{
+       this.enname="inline-block";
+        return false;
+      }
+    },
+    checkForm(){
+      if(this.checkUname()){
+        this.axios.post("/login",`uname=${this.uname}&upwd=${this.upwd}`).then((result)=>{
+          if(result.data.code==200){
+            alert(`登录成功`);
+            this.$router.push('/')
+          }else if(result.data.code==201){
+            this.enupwd="inline-block";
+          }
+        })
+      }
+    }
+  }
+}
+</script>
 <style lang="scss"  scoped>
 .bj {
   overflow: auto;
@@ -45,6 +83,10 @@
   background-repeat: repeat;
   min-height: 100vh;
   min-width: 630px;
+  .common-from li span{
+    color:red;
+    font-size:13px
+  }
 }
 .login {
   width: 480px;
@@ -150,23 +192,28 @@
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    position: relative;
     margin-top: 70px;
     span {
       line-height: 40px;
-      left: 13px;
+      position: absolute;
+      right: 20px;
+      top: 5px;
       text-align: left;
     }
     input {
-      width: 372px;
+      width: 300px;
       font-weight: 700;
       font-size: 15px;
       height: 20px;
       padding: 12px 12px 12px 15px;
       border: none;
-      position: relative;
+      position: absolute;
       z-index: 10;
       box-sizing: border-box;
       background: rgba(255, 255, 255, 0);
+      left: 25px;
+      top: 12px;
     }
   }
 }

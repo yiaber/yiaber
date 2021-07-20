@@ -51,8 +51,33 @@ app.post('/login', (req, res) => {
       res.send({message:'ok',code:200,result:results[0]});
     }
   });
-
 });
+
+
+//用户注册接口
+app.post('/register',(req,res)=>{
+  let uname=req.body.uname;
+  let upwd=req.body.upwd;
+  let phone=req.body.phone;
+  //以uname为条件查询，保证用户名的唯一性
+  let sql='select count(uid) AS count from cz_user where uname=?';
+  pool.query(sql,[uname],(errer,result)=>{
+    if (errer) throw errer;
+    let count =result[0].count;
+    if(count==0){
+      //将用户的相关信息插入到数据表
+      sql='insert cz_user(uname,upwd,phone) values(?,?,?)';
+      pool.query(sql,[uname,upwd,phone],(errer,result)=>{
+        if (errer) throw errer;
+        res.send({msg:'ok',code:200});
+      })
+    }else{
+      res.send({msg:'user exists',code:201});
+    }
+  });
+});
+
+
 //轮播图
 app.get('/carousel',(req,res)=>{
   let sql='select*from cz_index_carousel';

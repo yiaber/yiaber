@@ -59,6 +59,7 @@
   width: 100%;
   background-image: linear-gradient(127deg, #222325, #3b3c3f, #222325);
   line-height: 45px;
+  height: 45px;
   .logo {
     float: left;
     margin-top: 12px;

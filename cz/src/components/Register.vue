@@ -18,12 +18,14 @@
           <span :style="{display:enphone}" style="color:green">手机号码格式正确</span>
         </li>
         <li>
-          <input type="password" placeholder="密码" />
-          <span style="display:none">密码格式不正确！</span>
+          <input type="password" placeholder="密码" v-model="upwd" @blur="checkUpwd"/>
+          <span :style="{display:unpwd}">密码格式不正确！</span>
+          <span :style="{display:enpwd}" style="color:green">密码格式正确</span>
         </li>
         <li>
-          <input type="password" placeholder="确认密码" />
-          <span style="display:none">两次密码不一致！</span>
+          <input type="password" placeholder="确认密码" v-model="upwd1" @blur="checkUpwd1"/>
+          <span :style="{display:unpwd1}">两次密码不一致！</span>
+          <!-- <span :style="{display:enpwd1}" style="color:green">两次密码一致</span> -->
         </li>
       </ul>
       <div class="title-di">
@@ -47,13 +49,18 @@
 export default {
   data() {
     return {
-      
       uname:'' ,//uname将于用户名文本框实现双向绑定，实现用户名格式验证
       unname:'none',
       enname:'none',
       phone:'',//phone 将手机号码实现双向绑定，实现手机号码格式验证
       unphone:'none',
-      enphone:'none'
+      enphone:'none',
+      upwd:'',//upwd 将密码框双向绑定，实现密码格式验证
+      unpwd:'none',
+      enpwd:'none',
+      upwd1:'',  //upwd1将密码确认框绑定，实现确认两次密码一致
+      unpwd1:'none',
+      // enpwd1:'none'
     }
   },
   methods:{
@@ -64,19 +71,64 @@ export default {
       if(reg.test(this.uname)){//验证成功
         this.enname="inline-block";
         this.unname="none"
+        return true;
       }else{//验证失败
         this.unname="inline-block"
-        this.enname="none"
+        this.enname="none";
+        return false;
       }
     },
+    //验证手机号码 要求为11为数字
     checkPhone(){
       let reg=/^\d{11}$/; 
-      if(reg.test(this.phone)){
-        this.enphone="inline-block",
-        this.unphone="none"
+      if(reg.test(this.phone)){  //格式正确
+        this.enphone="inline-block";
+        this.unphone="none";
+         return true;
+      }else{  //格式不正确
+        this.unphone="inline-block";
+        this.enphone="none";
+         return false;
+      }
+    },
+    //验证密码格式是否正确
+    checkUpwd(){
+      let reg=/^\d{6,16}$/;
+      if(reg.test(this.upwd)){  //格式正确
+        this.enpwd="inline-block";
+        this.unpwd="none"
+         return true;
+      }else{  //格式不正确
+        this.unpwd="inline-block";
+        this.enpwd='none';
+         return false;
+      }
+    },
+    //验证两次密码是否一致
+    checkUpwd1(){
+      if(this.upwd==this.upwd1){
+        // this.enpwd1='inline-block';
+        this.unpwd1='none';
+         return true;
       }else{
-        this.unphone="inline-block",
-        this.enphone="none"
+        this.unpwd1='inline-block';
+        // this.enpwd1='none';
+         return false;
+      }
+    },
+
+    //点击注册验证表单格式
+    checkForm(){
+      if(this.checkUname() && this.checkPhone() && this.checkUpwd() && this.checkUpwd1){
+        this.axios.post("/register",`uname=${this.uname}&upwd=${this.upwd}&phone=${this.phone}`).then((result)=>{
+          console.log(result);
+          if(result.data.code==200){
+            alert(`注册成功`);
+            this.$router.push('/login')
+          }else if(result.data.code==201){
+            alert(`注册失败，该用户已存在，请重新输入用户名`)
+          }
+        })
       }
     }
   }

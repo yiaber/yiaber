@@ -272,9 +272,9 @@ export default {
     });
     // 商品详情列表第一张图
     this.axios.get("/home/index/3").then((result)=>{
-      console.log(result.data);
+      // console.log(result.data);
       this.remen=result.data.result;
-      console.log(this.remen[1].img)
+      // console.log(this.remen[1].img)
     });
     //查询坚果R2及配件
     this.axios.get("/home/index/31").then((result)=>{

@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div :style="{width:innerwidth+'px'}" class="carousel">
+        <div :style="{width:innerWidth+'px'}" class="carousel">
             <div class="carous" :style="ulStyle" :class="ulClass">
-                <div v-for="(p,i) of cospic" :key="i" :style="{width:innerwidth+'px','background-image':`url(${p.c_pic})`,'background-size':'138% 100%','background-position':'-350px'}" class="carous-item">
+                <div v-for="(p,i) of cospic" :key="i" :style="{width:1220+'px','background-image':`url(${p.img})`,'background-size':'1220px 100%','background-position':'-350px'}" class="carous-item">
                 </div>
-                <div :style="{width:innerwidth+'px','background-image':`url(${cospic[0].c_pic})`,'background-size':'138% 100%','background-position':'-350px'}">
-                </div>   
+                <div :style="{width:1220+'px','background-image':`url(${cospic[0].img})`,'background-size':'138% 100%','background-position':'-350px'}">
+                </div> 
                 <ul class="carous-indi">
                     <li v-for="(img,index) of cospic" :key="index" :class="index==i?'active':''"  @click="moveTo(index)"></li>
                 </ul>   
@@ -30,14 +30,14 @@ export default {
     },
     created(){
         window.addEventListener("resize",()=>{
-             this.innerwidth=window.innerWidth<1660?1660:window.innerWidth          
+             this.innerwidth=window.innerWidth<1220?1220:window.innerWidth          
         })
         this.start()
     },
     mounted(){
       this.axios.get("/carousel").then(result=>{
-        this.cospic=result.data.results
-        console.log(this.cospic[1].img)
+        this.cospic=result.data.resules
+        console.log(this.cospic);
       })
     },
     computed:{
@@ -51,7 +51,7 @@ export default {
         move(){
              this.i++;
              this.ulClass.hastrans=true;
-             if(this.i>4){
+             if(this.i>3){
                  this.ulClass.hastrans=false;
                  this.i=0
              }
@@ -78,11 +78,14 @@ export default {
 <style  scoped>
 .carousel{
     overflow: hidden;
-    height: 610px;
+    width: 1220px;
+     height: 553px;
     position: relative;
-    top: 120px;
+    /* top: 120px; */
     }
  .carous{
+     margin: 0 auto;
+      width: 1220px;
     display: flex;
     height: 100%;}
 .carousel>.carous.hastrans{

@@ -95,7 +95,7 @@
       </div>
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 
   // 中间导航栏样式
   .center {

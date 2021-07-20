@@ -6,10 +6,11 @@ import Login  from '../views/Login'
 import Register from '../components/Register'
 
 
-// import Details from '../views/Details'
+import Details from '../views/Details'
 import Carousel from '../components/Carousel'
 import Carousel1 from '../components/Carousel1'
 // import Carousels from '../components/Carousels'
+import Particulars from '../components/Particulars'  //详情页
 
 
 
@@ -18,6 +19,11 @@ import Carousel1 from '../components/Carousel1'
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path:'/particulars',    //详情页
+    name:'Particulars',
+    component:Particulars
+  },
   {
     path:'/register',
     name:'Register',
@@ -48,11 +54,11 @@ const routes = [
   //   name:'Home',
   //   component:Home
   // },
-  // {
-  //   path:'/details',
-  //   name:'Details',
-  //   component:Details
-  // }
+  {
+    path:'/details',
+    name:'Details',
+    component:Details
+  }
   ,
   {
     path: '/',
