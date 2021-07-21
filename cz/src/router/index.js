@@ -11,6 +11,7 @@ import Carousel from '../components/Carousel'
 import Carousel1 from '../components/Carousel1'
 // import Carousels from '../components/Carousels'
 import Particulars from '../components/Particulars'  //详情页
+import Bottom from '../components/Bottom'  //底部导航
 
 
 
@@ -19,6 +20,11 @@ import Particulars from '../components/Particulars'  //详情页
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path:'/bottom',    //底部导航
+    name:'Bottom',
+    component:Bottom
+  },
   {
     path:'/particulars',    //详情页
     name:'Particulars',
