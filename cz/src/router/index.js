@@ -10,7 +10,7 @@ import Details from '../views/Details'
 import Carousel from '../components/Carousel'
 import Carousel1 from '../components/Carousel1'
 // import Carousels from '../components/Carousels'
-import Particulars from '../components/Particulars'  //详情页
+// import Particulars from '../components/Particulars'  //详情页
 import Bottom from '../components/Bottom'  //底部导航
 
 
@@ -26,9 +26,13 @@ const routes = [
     component:Bottom
   },
   {
-    path:'/particulars',    //详情页
+    path:'/particulars/:fid',    //详情页
     name:'Particulars',
-    component:Particulars
+    component:()=> import(
+      /* webpackChunkName:"Particulars" */
+      '../components/Particulars.vue'
+    ),
+    props:true
   },
   {
     path:'/register',

@@ -235,6 +235,7 @@ export default {
       font-size: 24px;
       font-weight: 500;
       color: rgba(0, 0, 0, 0.8);
+      text-align: center;
       border-bottom: none;
       position: absolute;
       bottom: 0;

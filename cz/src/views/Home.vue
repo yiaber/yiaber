@@ -33,7 +33,7 @@
     <div class="shangping">
       <div class="shangpingxiangqing">
         <div class="toutupian" v-for="(item, i) in title" :key="i">
-          <router-link to="" onfocus="this.blur()">
+          <router-link to="">
             <img :src="'http://localhost:3000/' + item.img" alt="" />
           </router-link>
         </div>
@@ -45,7 +45,7 @@
         </div>
         <div class="card">
           <div class="card1" v-for="(item, i) in rexiao" :key="i">
-            <router-link to="">
+            <router-link :to="`/particulars/${item.fid}`">
               <img :src="'http://localhost:3000/' + item.imgage" alt="" />
               <h3>{{ item.fname }}</h3>
               <h4>{{ item.subtitle }}</h4>
@@ -251,7 +251,8 @@ export default {
     return {
       title: "",//首页轮播图下面四张图
       rexiao: "",////热门商品
-      remen:[{img:''}],// 商品详情列表第一张图
+      remen:[{img:"",href:""}],// 商品详情列表第一张图
+      // remen:{img:"",href:""},
       jianguo:'',//坚果R2及配件
       TNT:'',//Smartisan TNT
       peijian:'',//官方精选配件
@@ -319,6 +320,7 @@ export default {
       display: inline;
       a {
         text-decoration: none;
+        outline: 0;
       }
       a:hover .toutupian {
         box-shadow: 10px 10px 5px #888888;
@@ -338,6 +340,7 @@ export default {
     border: 1px solid rgba(0, 0, 0, 0.14);
     border-radius: 8px;
     background: #fff;
+    text-align: center;
     .text11 {
       width: 1193px;
       height: 60px;
@@ -416,6 +419,7 @@ export default {
     border: 1px solid rgba(0, 0, 0, 0.14);
     border-radius: 8px;
     background: #fff;
+    text-align: center;
     .text11 {
       width: 1193px;
       height: 60px;

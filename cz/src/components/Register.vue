@@ -250,7 +250,7 @@ export default {
       font-weight: 700;
       font-size: 15px;
       height: 20px;
-      padding: 12px 12px 12px 15px;
+      padding: 12px 12px 12px 60px;
       border: none;
       position: relative;
       z-index: 10;
@@ -277,6 +277,7 @@ export default {
       line-height: 29px;
       font-size: 24px;
       font-weight: 500;
+      text-align: center;
       color: rgba(0, 0, 0, 0.8);
       border-bottom: none;
       position: absolute;

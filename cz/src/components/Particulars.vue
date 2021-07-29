@@ -17,12 +17,12 @@
     <!-- 商品颜色、容量规格、保修服务说明 -->
     <div class="part-info">
       <div class="part-info-left">
-        <img src="../assets/11.webp" alt="" />
+        <img :src="'http://localhost:3000/'+details.imgage" alt="" />
       </div>
       <div class="part-info-right">
         <div class="part-info-title">
-          <h1>坚果 R2</h1>
-          <h2>是下一代手机，更是下一代电脑</h2>
+          <h1>{{details.fname}}</h1>
+          <h2>{{details.subtitle}}</h2>
         </div>
         <!-- 颜色选择 -->
         <div class="part-info-clear">
@@ -46,7 +46,7 @@
         <!-- 服务说明 -->
         <div class="part-info-tips">
           <div>服务说明</div>
-          <p>满 88 元包邮</p>
+          <p>{{details.state}}</p>
         </div>
         <!-- 保修服务 -->
         <div class="part-info-wrapper">
@@ -133,6 +133,21 @@ import mydetails from "./Details.vue";
 import mybottom from "./Bottom.vue";
 export default {
   components: { mydetails, mybottom },
+  props:["fid"],
+  data() {
+    return {
+      details:{imgage:''},
+    }
+  },
+  mounted(){
+    this.axios.get(
+      "/details",{params:{fid:this.fid}}
+    ).then(result=>{
+      console.log(result.data.result);
+      this.details=result.data.result;
+      console.log(this.details.fid)
+    })
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -287,6 +302,7 @@ body {
           height: 146px;
           display: inline-block;
           margin-left: 85px;
+
         }
         ul > li {
           position: relative;
@@ -394,7 +410,7 @@ body {
                   span {
                     font-weight: 600;
                     color: #d44d44;
-                    width: 50px;
+                    // width: 50px;
                     height: 24px;
                     line-height: 36px;
                   }

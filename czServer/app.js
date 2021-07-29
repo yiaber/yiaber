@@ -149,6 +149,23 @@ app.get('/home/index/34',(req,res)=>{
   })
 })
 
+//商品详情
+app.get('/details',(req,res)=>{
+  //获取地址栏的id参数
+  let fid=req.query.fid;
+  let sql="select *from cz_article where fid=?";
+  pool.query(sql,[fid],(errer,result)=>{
+    if (errer) throw errer;
+    console.log(result[0])
+    let fname=result[0].fname
+    let sql="select*from cz_article where fname=?";
+    pool.query(sql,[fname],(errer,result)=>{
+      if(errer) throw errer;
+      console.log(result);
+    })
+    res.send({msg:'ok',code:200,result:result[0]})
+  })
+})
 
 
 // 指定服务器对象监听的端口号
