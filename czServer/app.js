@@ -30,6 +30,7 @@ app.use(bodyParser.urlencoded({
 app.use( express.static('./public') );
 // 加载CORS模块
 const cors = require('cors');
+const { send } = require('process');
 
 // 使用CORS中间件
 app.use(cors({
@@ -153,17 +154,19 @@ app.get('/home/index/34',(req,res)=>{
 app.get('/details',(req,res)=>{
   //获取地址栏的id参数
   let fid=req.query.fid;
+  let details={};
   let sql="select *from cz_article where fid=?";
   pool.query(sql,[fid],(errer,result)=>{
     if (errer) throw errer;
     console.log(result[0])
-    let fname=result[0].fname
-    let sql="select*from cz_article where fname=?";
-    pool.query(sql,[fname],(errer,result)=>{
-      if(errer) throw errer;
-      console.log(result);
+    console.log(result[0].fname)
+    details["name"]=result
+    pool.query("select*from cz_article where fname=?",[result[0].fname],(err,results)=>{
+      if (err) throw err;
+      console.log(results)
+      details["res"]=results
+      res.send(details)
     })
-    res.send({msg:'ok',code:200,result:result[0]})
   })
 })
 
