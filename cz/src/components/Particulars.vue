@@ -17,36 +17,31 @@
     <!-- 商品颜色、容量规格、保修服务说明 -->
     <div class="part-info">
       <div class="part-info-left">
-        <img :src="'http://localhost:3000/'+details.imgage" alt="" />
+        <img :src="'http://localhost:3000/'+name.imgage" alt="" />
       </div>
       <div class="part-info-right">
         <div class="part-info-title">
-          <h1>{{details.fname}}</h1>
-          <h2>{{details.subtitle}}</h2>
+          <h1>{{name.fname}}</h1>
+          <h2>{{name.subtitle}}</h2>
         </div>
         <!-- 颜色选择 -->
         <div class="part-info-clear">
           <span>颜色选择</span>
           <ul>
-            <li><div>浅墨色</div></li>
-            <li><div>松绿色</div></li>
-            <li><div>纯白色光阴特别版</div></li>
+            <li><div>{{name.colour}}</div></li>
           </ul>
         </div>
         <!-- 规格选择 -->
         <div class="part-info-spec">
           <span>容量选择</span>
           <ul>
-            <li><div>8G+128G</div></li>
-            <li><div>8G+256G</div></li>
-            <li><div>12G+256G</div></li>
-            <li><div>16G+512G</div></li>
+            <li><div>{{name.spec}}</div></li>
           </ul>
         </div>
         <!-- 服务说明 -->
         <div class="part-info-tips">
           <div>服务说明</div>
-          <p>{{details.state}}</p>
+          <p>{{name.state}}</p>
         </div>
         <!-- 保修服务 -->
         <div class="part-info-wrapper">
@@ -136,16 +131,29 @@ export default {
   props:["fid"],
   data() {
     return {
-      details:{imgage:''},
+      details:[],
+      name:{},
+      res:{}
     }
   },
   mounted(){
     this.axios.get(
       "/details",{params:{fid:this.fid}}
     ).then(result=>{
-      console.log(result.data.result);
-      this.details=result.data.result;
-      console.log(this.details.fid)
+      console.log(result.data);
+      this.details=result.data;
+      this.name=this.details.name[0]
+      // console.log(this.name)
+      this.res=this.details.res;
+      console.log(this.res);
+      // for(var i=0;i<this.res.length;i++){
+      //   var a=this.res[i];
+      //   var newRes=[];
+      //   console.log(a.colour)
+      //   // console.log((a.colour).push(newRes))
+      //   return;
+      // }
+      console.log(newRes.push(a.colour))
     })
   },
 };

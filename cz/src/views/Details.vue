@@ -5,7 +5,7 @@
       <div class="nav clearfix">
         <ul>
           <li>
-            <a href="">在线商城</a>
+            <router-link to="/">在线商城</router-link>
           </li>
           <li>
             <a href="">坚果 R2</a>

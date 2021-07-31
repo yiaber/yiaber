@@ -25,7 +25,7 @@
         </div>
         <div class="rightSearch">
           <img src="../assets/imgages/logs/search.png" alt="" />
-          <input type="text" placeholder="请输入搜索的商品" />
+          <input type="text" placeholder="请输入搜索的商品" v-model="fname" @keyup.13="input"/>
         </div>
       </div>
     </div>
@@ -68,7 +68,7 @@
             </router-link>
           </div>
           <div class="card1" v-for="(item, i) in jianguo" :key="i">
-            <router-link to="">
+            <router-link :to="`/particulars/${item.fid}`">
               <img :src="'http://localhost:3000/' + item.imgage" alt="" />
               <h3>{{ item.fname }}</h3>
               <h4>{{ item.subtitle }}</h4>
@@ -91,7 +91,7 @@
             </router-link>
           </div>
           <div class="card1" v-for="(item, i) in TNT" :key="i">
-            <router-link to="">
+            <router-link :to="`/particulars/${item.fid}`">
               <img :src="'http://localhost:3000/' + item.imgage" alt="" />
               <h3>{{ item.fname }}</h3>
               <h4>{{ item.subtitle }}</h4>
@@ -114,7 +114,7 @@
             </router-link>
           </div>
           <div class="card1" v-for="(item, i) in peijian" :key="i">
-            <router-link to="">
+            <router-link :to="`/particulars/${item.fid}`">
               <img :src="'http://localhost:3000/' + item.imgage" alt="" />
               <h3>{{ item.fname }}</h3>
               <h4>{{ item.subtitle }}</h4>
@@ -137,7 +137,7 @@
             </router-link>
           </div>
           <div class="card1" v-for="(item, i) in baohuke" :key="i">
-            <router-link to="">
+            <router-link :to="`/particulars/${item.fid}`">
               <img :src="'http://localhost:3000/' + item.imgage" alt="" />
               <h3>{{ item.fname }}</h3>
               <h4>{{ item.subtitle }}</h4>
@@ -257,7 +257,14 @@ export default {
       TNT:'',//Smartisan TNT
       peijian:'',//官方精选配件
       baohuke:'',//足迹系列保护壳
+      fname:'',  //搜索商品
     };
+  },
+  methods:{
+    input(){
+      console.log(`搜索${this.fname}相关的内容`)
+      this.$router.push(`/cearch/${this.fname}`)
+    }
   },
   mounted() {
     //首页轮播图下面四张图

@@ -1,11 +1,13 @@
 <template>
   <div>
     <div class="head">
-      <img class="logo" src="../assets/下载.png" alt="" />
+     <router-link to="/">
+        <img class="logo" src="../assets/下载.png" alt="" />
+     </router-link>
       <div class="nav clearfix">
         <ul>
           <li>
-            <a href="">在线商城</a>
+            <router-link to="/">在线商城</router-link>
           </li>
           <li>
             <a href="">坚果 R2</a>

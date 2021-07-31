@@ -170,6 +170,17 @@ app.get('/details',(req,res)=>{
   })
 })
 
+//搜索商品  
+app.get('/cearch',(req,res)=>{
+  //获取地址栏的传过来的参数
+  let fname=`%${req.query.fname}%`;
+  pool.query("select *from cz_article where fname like ?",[fname],(err,result)=>{
+    if(err) throw err;
+    console.log(result);
+    res.send(result)
+  })
+})
+
 
 // 指定服务器对象监听的端口号
 app.listen(3000, () => {

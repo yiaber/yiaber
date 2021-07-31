@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home'
-import Det from '../views/Det'
 import Login  from '../views/Login'
 import Register from '../components/Register'
+// import Cearch from '../components/Cearch'
 
 
 import Details from '../views/Details'
@@ -20,6 +20,15 @@ import Bottom from '../components/Bottom'  //底部导航
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path:'/cearch/:fname',
+    name:'Cearch',
+    component:()=> import(
+      /* webpackChunkName:"Cearch" */
+      '../components/Cearch.vue'
+      ),
+       props:true
+    },
   {
     path:'/bottom',    //底部导航
     name:'Bottom',
@@ -53,11 +62,6 @@ const routes = [
     path:'/login',
     name:'Login',
     component:Login
-  },
-  {
-    path:'/det',
-    name:'Det',
-    component:Det
   },
   // {
   //   path:'/home',
