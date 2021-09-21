@@ -25,7 +25,7 @@
         </div>
         <div class="rightSearch">
           <img src="../assets/imgages/logs/search.png" alt="" />
-          <input type="text" placeholder="请输入搜索的商品" value="" />
+          <input type="text" placeholder="请输入搜索的商品" v-model="fnames" @keyup.13="input" />
         </div>
       </div>
     </div>
@@ -53,9 +53,19 @@ export default {
   data() {
     return {
         search:[],
+        fnames:'',//搜索的商品
     };
   },
-
+  methods: {
+    input(){
+      this.axios.get(
+        "/cearch",{params:{fname:this.fnames}}
+      ).then(result=>{
+        console.log(result.data);
+        this.search=result.data
+      })
+    }
+  },
   mounted(){
     //   console.log(this.fname)
       this.axios.get(
